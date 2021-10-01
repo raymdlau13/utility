@@ -6,7 +6,7 @@ $regexPattern = '^\s+(?<Protocol>\w+)\s{2,}(?<LocalIP>.+):(?<LocalPort>.+?)\s{2,
 foreach ($line in (netstat -ano)) {
   if ($line -match $regexPattern ) { 
 	if ($Matches.State -eq 'LISTENING') {
-		$processName = Get-Process -Id ($Matches.PID) |select -ExpandProperty ProcessName
+		$processName = Get-Process -Id ($Matches.PID) | Select-Object -ExpandProperty ProcessName
 		write-output "$($hostname),$($matches.Protocol),$($matches.LocalIP),$($matches.LocalPort),$($matches.DestIP),$($matches.DestPort),$($matches.State),$($matches.PID),$($processName)"
 	}
   }
