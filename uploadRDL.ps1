@@ -1,7 +1,6 @@
 $targetSSRS = "rereports"
 $targetRsUri = "http://$($targetSSRS)/ReportServer/ReportService2010.asmx?wsdl"
 $targetProxy = New-RsWebServiceProxy -ReportServerUri $targetRsUri
-## upload files like GSO* to targetProxy under path specified in $targetFolder
 $targetFolder = '/targetFolderName'
 Get-ChildItem . -Filter *.rdl | 
 Foreach-Object {
